@@ -1,0 +1,87 @@
+﻿body {
+    margin: 0px;
+}
+#left_column, #right_column {
+    width: 10vw; /* Chiều rộng của các cột bên trái và phải */
+    background-color: white; /* Màu nền trắng cho các cột */
+    height: 100%; /* Chiều cao của các cột bằng chiều cao của cửa sổ */
+}
+
+#top1 {
+    height: 50px;
+    width: 100%;
+}
+
+#top_header {
+    height: 110px;
+    width: 100%;
+}
+
+#Logo1 {
+    height: auto; /* Chiều cao tự động dựa trên tỷ lệ width */
+    width: 10vw; /* Chiều rộng logo chiếm 10% chiều rộng khung nhìn */
+    max-width: 150px; /* Giới hạn chiều rộng tối đa là 150px */
+    min-width: 50px; /* Giới hạn chiều rộng tối thiểu là 50px */
+    margin-left: 2vw; /* Căn nhích sang phải */
+    margin-right: 1vw; /* Căn giữa */
+    display: flex; /* Sử dụng Flexbox để căn giữa nội dung */   
+    float: left;
+    position: relative; /* Để dễ dàng căn giữa nội dung bên trong */
+}
+    #Logo1 img {
+        width: 100%; /* Đảm bảo ảnh chiếm toàn bộ chiều rộng của div */
+        height: auto; /* Giữ tỷ lệ hình ảnh */
+        max-height: 110px; /* Giới hạn chiều cao tối đa của logo */
+        min-height: 50px; /* Giới hạn chiều cao tối thiểu của logo */
+        align-items: center; /* Căn giữa theo chiều dọc */
+        justify-content: center; /* Căn giữa theo chiều ngang */
+    }
+
+/*thanh time kiem */
+#Div_Top_searchbar {
+    height: 50px;
+    width: 60vw; /* Chiều rộng chiếm 70% chiều rộng của khung nhìn */
+    float: left;
+    background-color: white;
+    margin-left: 1vw; /* Thay đổi margin-left sang đơn vị vw */
+    min-width: auto; /* Đảm bảo kích thước nhỏ nhất khi thu hẹp */
+    margin-right: auto;
+}
+
+
+#Div_Suggestion_Area {
+    height: 50px;
+    width: 60vw;
+    float: left;
+    background-color: blue;
+    margin-left: 1vw; /* Thay đổi margin-left sang đơn vị vw */
+    min-width: auto; /* Đảm bảo kích thước nhỏ nhất khi thu hẹp */
+    margin-right: auto;
+}
+
+#UserArea {
+    height: 110px;
+    width: 40vw;
+    float: left;
+    background-color: white;
+    margin-left: 1vw; /* Thay đổi margin-left sang đơn vị vw */
+    min-width: auto; /* Đảm bảo kích thước nhỏ nhất khi thu hẹp */
+    margin-right: auto;
+}
+
+#Div_UserArea1 {
+    height: 50px;
+    width: 20vw;
+    float: left;
+    background-color: red;
+    min-width: auto; /* Đảm bảo kích thước nhỏ nhất khi thu hẹp */
+
+}
+
+#Div_UserArea2 {
+    height: 50px;
+    width: 20vw;
+    float: left;
+    background-color: green;
+    min-width: auto; /* Đảm bảo kích thước nhỏ nhất khi thu hẹp */
+}

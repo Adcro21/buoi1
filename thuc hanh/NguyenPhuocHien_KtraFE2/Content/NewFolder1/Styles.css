@@ -1,0 +1,37 @@
+﻿body {
+    margin: 0px;
+}
+
+#div-top {
+    width: 100%;
+    height: 150px;
+    background-color: darkslategray;
+}
+
+#div-left {
+    width: 10%;
+    height: 800px;
+    background-color: ghostwhite;
+    float: left;
+}
+
+#div-content {
+    width: 80%;
+    height: 80px;
+    background-color: dimgrey;
+    float: left;
+}
+
+#div-right {
+    width: 10%;
+    height: 800px;
+    background-color: ghostwhite;
+    float: right;
+}
+
+#div-footer {
+    width: 100%;
+    height: 50px;
+    background-color: indianred;
+    clear: both;
+}

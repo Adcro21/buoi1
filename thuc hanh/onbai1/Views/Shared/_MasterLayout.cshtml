@@ -1,0 +1,39 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link href="~/Content/danbai/danbai.css" rel="stylesheet" />
+    <link rel="icon" type="image/png" href="~/Content/anh/tiki.png" /> @*để ảnh vào title*@ 
+</head>
+<body background-color: white;>
+    <div>
+         <div id="top1">
+     <h2 align="center" style="background-color:lightgreen;">Freeship đơn từ 45, giảm nhiều hơn cùng <span style="color:blue">FREESHIP</span> XTRA</h2>
+         </div>
+ <div id="top_header">
+     <div id="Logo1">
+           <img src="~/Content/anh/logotiki.jpg"   alt="Logo"/>
+     </div>
+
+     <div id="Div_Top_searchbar">
+         <input type="text" name="id" value="Giá siêu rẻ" style="width: 60%; max-width: 60vw; min-width: 10%; height: 20px;" />
+         <button style="padding: 5px 10px; background-color: white ; color: blue; border: none; cursor: pointer;">Tìm kiếm</button>
+     </div>
+     <div id="Div_UserArea1">
+         1
+     </div>
+     <div id="Div_Suggestion_Area">
+         2
+     </div>
+     <div id="Div_UserArea2">
+         3
+     </div>
+ </div>
+ <div>
+     @RenderBody()
+ </div>
+    </div>
+</body>
+</html>

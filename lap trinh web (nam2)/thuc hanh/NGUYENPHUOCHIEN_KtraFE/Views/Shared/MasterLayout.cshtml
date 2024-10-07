@@ -1,0 +1,147 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link href="~/Content/dàn bài/body.css" rel="stylesheet" />
+    <link rel="icon" type="image/png" href="~/Content/ảnh/tiki.png" /> @*để ảnh vào title*@
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script language="JavaScript">
+        function searchMap() {
+            const defaultAddress = "828 Đ. Sư Vạn Hạnh, Phường 12, Quận 10";
+            /*            const defaultLocation = "HUFLIT Sư Vạn Hạnh";*/
+            var address = document.getElementById('addressInput').value;
+            if (address) {
+                var url = 'https://www.google.com/maps/dir/?api=1&origin=' + encodeURIComponent(defaultAddress) + '&destination=' + encodeURIComponent(address);
+                window.open(url, '_blank');
+            }
+        }
+        function updateSuggestion() {
+            var inputText = document.getElementById('seachboxInput').value;
+            var suggestionList = document.getElementById('suggestions');
+            suggestionList.innerHTML = '';
+
+            for (var i = 0; i < 10; i++) {
+                var option = document.createElement('option');
+                option.value = inputText + ' ' + (i + 1);
+                suggestionList.appendChild(option);
+            }
+            document.getElementById('suggestionBox').value = inputText + ' 1';
+        }
+        let index = 0;
+        const slidesToShow = 2;
+        const totalSlides = document.querySelectorAll('.slide').length;
+
+        function showSlide() {
+            const slider = document.querySelector('.slider');
+            const slideWidth = document.querySelector('.slide').clientWidth;
+            slider.style.transform = 'translateX(' + (-index * slideWidth) + 'px)';
+        }
+
+        function prevSlide() {
+            index = (index === 0) ? 1 : (index - 1);
+            showSlide();
+        }
+
+        function nextSlide() {
+            index = (index === 1) ? 0 : (index + 1);
+            showSlide();
+        }
+
+        showSlide();
+    </script>
+</head>
+
+<body background-color: white;>
+    <div>
+        <div id="top1">
+            <h2 align="center" style="background-color:lightgreen;">Freeship đơn từ 45, giảm nhiều hơn cùng <span style="color:blue">FREESHIP</span> XTRA</h2>
+        </div>
+        <div id="top_header">
+            <div id="Logo1">
+                <img src="~/Content/ảnh/logotiki.jpg" alt="Logo" />
+            </div>
+
+            <div id="Div_Top_searchbar">
+                <input type="text" name="id" value="Giá siêu rẻ" style="width: 60%; max-width: 60vw; min-width: 10%; height: 20px;" />
+                <button style="padding: 5px 10px; background-color: white ; color: blue; border: none; cursor: pointer;">Tìm kiếm</button>
+            </div>
+            <div id="Div_UserArea1">
+
+                <button
+                    <i class="fas fa-home" style="white-space: nowrap; background-color: white; color: blue; border: 0; cursor: pointer;">TRANG CHỦ</i>
+                </button>
+                <button>
+                 
+                    <i class="fal fa-smile-wink" style="white-space: nowrap; background-color: white; color: black; border: 0; cursor: pointer;">Tài khoản</i>
+                </button>
+               
+              
+            </div>
+            <div id="Div_Suggestion_Area">
+                <button style="white-space: nowrap; background-color: white; border: none; cursor: pointer; ">điện gia dụng</button>
+                <button style="white-space: nowrap; background-color: white; border: none; cursor: pointer; ">xe cộ</button>
+                <button style="white-space: nowrap; background-color: white; border: none; cursor: pointer; ">mẹ &amp; bé</button>
+                <button style="white-space: nowrap; background-color: white; border: none; cursor: pointer; ">khỏe đẹp</button>
+                <button style="white-space: nowrap; background-color: white; border: none; cursor: pointer; ">nhà cửa</button>
+                <button style="white-space: nowrap; background-color: white; border: none; cursor: pointer; ">sách</button>
+                <button style="white-space: nowrap; background-color: white; border: none; cursor: pointer; ">thể thao</button>
+                <button style="white-space: nowrap; background-color: white; border: none; cursor: pointer; ">iphone 13</button>
+                <button style="white-space: nowrap; background-color: white; border: none; cursor: pointer; ">điện thoại</button>
+                <button style="white-space: nowrap; background-color: white; border: none; cursor: pointer; ">ipad air 5</button>
+                <button style="white-space: nowrap; background-color: white; border: none; cursor: pointer; ">oppo a17k</button>
+
+            </div>
+            <div id="Div_UserArea2" style="font-family: 'Arial'">
+                <button 
+                        <i class="fal fa-map-marker-alt" style="padding: 5px 10px; background-color: white ; color: black; border: 0; cursor: pointer;">Giao đến: </i>
+                </button>
+                <input type="text" name="id" border: none; style="width: 80%; max-width: 80vw; min-width: 10%; height: 20px;" />
+                <span id="displayAddress"></span>
+            </div>
+
+            <div id="Under_header" style="margin-top: 10px; gap: 4px;">
+                <div style="display:flex; align-items:center; font-size:12px; font-weight:500;">
+                    <button style="white-space: nowrap; background-color: white; border: none; cursor: pointer; ">Cam Kết</button>
+                  
+                    <div style="display:flex; ">
+                        <div style="display:flex; gap:4px; align-items:center;">
+                            <img src="~/Content/ảnh/hàng thật.png" alt="check" width="30" height="25" />
+                            <button style="white-space: nowrap; background-color: white; border: none; cursor: pointer; ">100% hàng thật </button>
+                        </div>
+                        <div style="display:flex; align-items:center;">
+                            <img src="~/Content/ảnh/hoàn tiền.png" alt="cashback" width="20" height="20" />
+                            <button style="white-space: nowrap; background-color: white; border: none; cursor: pointer; ">Hoàn 200% nếu hàng giả</button>
+                        </div>
+                        <div style="display:flex; align-items:center;">
+                            <img src="~/Content/ảnh/đổi trả.png" alt="guarantee" height="30" width="30" />
+                            <button style="white-space: nowrap; background-color: white; border: none; cursor: pointer; ">30 ngày đổi trả</button>
+                        </div>
+                        <div style="display:flex; align-items:center;">
+                            <img src="~/Content/ảnh/giao nhanh.png" alt="delivery" height="30" width="30" />
+                            <button style="white-space: nowrap; background-color: white; border: none; cursor: pointer; ">Giao hàng nhanh 2h</button>
+                        </div>
+                        <div style="display:flex; align-items:center;">
+                            <img src="~/Content/ảnh/giá siêu rẻ.png" alt="best pricing" height="30" width="30" />
+                       <button style="white-space: nowrap; background-color: white; border: none; cursor: pointer; ">Giá siêu rẻ</button>
+                        </div>
+                        <div style="display:flex; align-items:center;">
+                            <img src="~/Content/ảnh/freeship.png" alt="freeshipping" height="30" width="30" />
+                            <button style="white-space: nowrap; background-color: white; border: none; cursor: pointer; ">Freeship mọi đơn</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+        </div>
+        <div>
+            @RenderBody()
+        </div>
+    </div>
+
+
+</body>
+</html>
