@@ -1,32 +1,24 @@
 ﻿body {
-    margin: 0px;
-}
-
-#left_column, #right_column {
-    width: 10vw; /* Chiều rộng của các cột bên trái và phải */
-    background-color: white; /* Màu nền trắng cho các cột */
-    height: 100%; /* Chiều cao của các cột bằng chiều cao của cửa sổ */
+    margin: 0; /* Đặt khoảng cách bên ngoài của body là 0 */
+    background-color: white; /* Thêm màu nền trắng cho body */
 }
 
 #top1 {
-    height: 50px;
-    width: 100%;
+    height: 50px; /* Chiều cao của phần top1 */
+    width: 100%; /* Chiếm toàn bộ chiều rộng */
 }
 
 #top_header {
-    height: 110px;
-    width: 100%;
+    height: 110px; /* Chiều cao của header */
+    width: 100%; /* Chiếm toàn bộ chiều rộng */
 }
 
 #Logo1 {
-    height: auto; /* Chiều cao tự động dựa trên tỷ lệ width */
-    width: 10vw; /* Chiều rộng logo chiếm 10% chiều rộng khung nhìn */
-    max-width: 150px; /* Giới hạn chiều rộng tối đa là 150px */
-    min-width: 50px; /* Giới hạn chiều rộng tối thiểu là 50px */
-    margin-left: 1vw; /* Căn nhích sang phải */
-    margin-right: 1vw; /* Căn giữa */
-    display: flex; /* Sử dụng Flexbox để căn giữa nội dung */
-    float: left;
+    width: 10vw; /* Chiều rộng là 10% chiều rộng khung nhìn */
+    max-width: 150px; /* Chiều rộng tối đa 150px */
+    min-width: 50px; /* Chiều rộng tối thiểu 50px */
+    margin: 1.5vw 1vw 0 2vw; /* Căn nhích sang phải */
+    display: flex; /* Sử dụng flexbox để căn giữa các phần tử */
     position: relative; /* Để dễ dàng căn giữa nội dung bên trong */
 }
 
@@ -35,107 +27,121 @@
         height: auto; /* Giữ tỷ lệ hình ảnh */
         max-height: 110px; /* Giới hạn chiều cao tối đa của logo */
         min-height: 50px; /* Giới hạn chiều cao tối thiểu của logo */
+        display: flex; /* Sử dụng flexbox để căn giữa nội dung bên trong */
         align-items: center; /* Căn giữa theo chiều dọc */
         justify-content: center; /* Căn giữa theo chiều ngang */
     }
 
-/*thanh time kiem */
-#Div_Top_searchbar {
-    height: 50px;
-    width: 60vw; /* Chiều rộng chiếm 70% chiều rộng của khung nhìn */
-    float: left;
-    background-color: white;
-    align-items: center;
-    margin-left: 1vw; /* Thay đổi margin-left sang đơn vị vw */
-    min-width: auto; /* Đảm bảo kích thước nhỏ nhất khi thu hẹp */
-    margin-right: auto;
-}
-
+#Div_Top_searchbar,
 #Div_Suggestion_Area {
-    display: flex;
-    float: left;
-    flex-wrap: nowrap; /* Không cho phép các phần tử xuống dòng */
-    gap: 1px; /* Khoảng cách giữa các nút */
-    justify-content: space-around; /* Căn đều các nút */
-    align-items: center; /* Căn giữa theo chiều dọc */
-    padding: 10px;
+    height: 50px; /* Chiều cao của thanh tìm kiếm và khu vực gợi ý */
+    width: 70vw; /* Chiếm 70% chiều rộng khung nhìn */
+    margin-left: 1vw; /* Căn nhích sang phải */
 }
 
-    #Div_Suggestion_Area button {
-        width: auto; /* Đảm bảo kích thước đều nhau */
-        min-width: 40px; /* Đặt chiều rộng tối thiểu để không mất chữ */
-        max-width: 800px; /* Đặt chiều rộng tối đa */
-        height: 20px; /* Tăng chiều cao để làm nút lớn hơn */
-        font-size: calc(4px + 0.5vw); /* Phóng to nhỏ chữ */
-        background-color: white;
-        color: black;
-        border: none;
-        cursor: pointer;
-        white-space: nowrap; /* Đảm bảo nội dung không xuống dòng */
-        text-overflow: ellipsis; /* Dùng dấu '...' nếu nội dung quá dài */
-        overflow: hidden; /* Đảm bảo không tràn nội dung */
-        text-align: center; /* Căn giữa nội dung nút */
-        padding: 1.5px; /* Thêm khoảng cách giữa văn bản và viền */
+#Div_UserArea1,
+#Div_UserArea2 {
+    height: 50px; /* Chiều cao của các khu vực người dùng */
+    width: 15.5vw; /* Chiều rộng các khu vực người dùng */
+    margin-right: 10px; /* Khoảng cách bên phải */
+}
+
+#Div_DeliverTo {
+    height: 50px; /* Chiều cao khu vực giao hàng */
+    width: 5vw; /* Chiều rộng khu vực giao hàng */
+}
+
+#Div_BelowHeader,
+#Div_BodyHeader,
+#Div_SliderBody {
+    width: 85%; /* Chiếm 85% chiều rộng khung nhìn */
+    margin: 5px auto; /* Căn giữa */
+    overflow: hidden; /* Ẩn các phần tử tràn ra ngoài */
+    background-color: white; /* Màu nền trắng */
+    position: relative; /* Để đặt vị trí cho các nút điều hướng */
+}
+
+.slider-container {
+    display: flex; /* Hiển thị các slide theo hàng ngang */
+    transition: transform 0.5s ease; /* Hiệu ứng chuyển động mượt mà */
+}
+
+.slide {
+    min-width: 100%; /* Mỗi slide chiếm toàn bộ chiều rộng của khung chứa */
+    box-sizing: border-box; /* Đảm bảo padding không làm thay đổi kích thước */
+}
+
+    .slide img {
+        width: 100%; /* Đảm bảo ảnh chiếm toàn bộ chiều rộng của slide */
+        height: auto; /* Giữ tỷ lệ hình ảnh */
     }
 
-
-#UserArea {
-    height: 110px;
-    width: 40vw;
-    float: left;
-    background-color: white;
-    margin-left: 10vw; /* Thay đổi margin-left sang đơn vị vw */
-    min-width: auto; /* Đảm bảo kích thước nhỏ nhất khi thu hẹp */
-    margin-right: auto;
-}
-/*người dùng */
-#Div_UserArea1 {
-    height: 50px;
-    width: 20vw;
-    background-color: white;
-    margin-right: 0.1vw;
-    float: left;
-    min-width: auto; /* Đảm bảo kích thước nhỏ nhất khi thu hẹp */
-    font-size: calc(6px + 0.5vw);
-}
-/*địa chỉ */
-#Div_UserArea2 {
-    height: 50px;
-    width: 20vw;
-    float: left;
-    margin-left: 20vw; /* Căn nhích sang phải */
-    background-color: white;
-    min-width: auto; /* Đảm bảo kích thước nhỏ nhất khi thu hẹp */
-    border: none;
-}
-#addressInput {
-    width: 40%; /* Đảm bảo kích thước phù hợp */
-    max-width: 40vw;
-    min-width: 10%;
-    height: 20px;
-    border: none; /* Bỏ viền */
-    outline: none; /* Bỏ viền khi được chọn */
-    padding: 5px; /* Thêm khoảng cách bên trong ô nhập */
+.navigation {
+    position: absolute; /* Đặt các nút điều hướng bên trên slider */
+    top: 50%; /* Đặt chúng ở giữa chiều cao */
+    transform: translateY(-50%); /* Căn giữa theo chiều dọc */
+    width: 100%; /* Chiếm toàn bộ chiều rộng */
+    display: flex; /* Sử dụng flexbox để căn giữa */
+    justify-content: space-between; /* Căn các nút đều nhau */
 }
 
-#displayAddress {
-    margin-left: 10px; /* Khoảng cách giữa ô nhập và địa chỉ hiển thị */
-    font-weight: bold;
+button {
+    background-color: rgba(255, 255, 255, 0.7); /* Nền trong suốt cho nút */
+    border: none; /* Bỏ viền cho nút */
+    cursor: pointer; /* Thay đổi con trỏ khi hover */
+    padding: 10px; /* Thêm khoảng cách cho nút */
+    font-size: 24px; /* Kích thước chữ cho nút */
+    transition: background-color 0.3s; /* Hiệu ứng chuyển đổi nền */
 }
 
-#addressButton {
-    padding: 5px 10px;
-    background-color: white;
-    color: black;
-    border: none;
-    cursor: pointer;
+    button:hover {
+        background-color: rgba(255, 255, 255, 1); /* Nền trắng khi hover */
+    }
+
 }
-#Under_header {
-    margin-top: 5px;
-    height: 20px;
-    width: 100%;
-    float: left;
-    margin-left: 2vw;
-    margin-bottom: 5px;
-    background-color: white;
+
+#Div_BelowHeader {
+    height: 20px; /* Chiều cao khu vực dưới tiêu đề */
 }
+
+#Div_Nav nav ul {
+    list-style-type: none; /* Bỏ dấu đầu dòng cho danh sách */
+    padding: 0; /* Bỏ khoảng cách bên trong */
+    margin: 0; /* Bỏ khoảng cách bên ngoài */
+}
+
+    #Div_Nav nav ul li {
+        display: inline-block; /* Hiển thị các mục theo hàng ngang */
+        margin-right: 20px; /* Khoảng cách giữa các mục */
+        cursor: pointer; /* Thay đổi con trỏ thành bàn tay khi hover */
+        transition: color 0.3s; /* Hiệu ứng chuyển đổi màu sắc */
+    }
+
+        #Div_Nav nav ul li:hover {
+            color: #007BFF; /* Thay đổi màu sắc khi hover */
+        }
+
+        #Div_Nav nav ul li span {
+            cursor: pointer; /* Thay đổi con trỏ thành bàn tay cho span */
+        }
+
+}
+
+#Div_BodyContainer {
+    margin-top: 1px; /* Khoảng cách bên trên */
+    width: 100%; /* Chiếm toàn bộ chiều rộng */
+    height: 1600px; /* Chiều cao khu vực thân chính */
+}
+
+/* Các nút trong khu vực dưới tiêu đề */
+#Under_header button {
+    background-color: white; /* Nền trắng cho các nút trong khu vực dưới tiêu đề */
+    border: none; /* Bỏ viền cho nút */
+    cursor: pointer; /* Thay đổi con trỏ khi hover */
+    padding: 10px 15px; /* Thêm khoảng cách cho nút */
+    transition: background-color 0.3s; /* Hiệu ứng chuyển đổi nền */
+}
+
+    #Under_header button:hover {
+        background-color: #f0f0f0; /* Nền màu xám nhạt khi hover */
+    }

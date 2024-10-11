@@ -7,50 +7,55 @@
     <link href="~/Content/dàn bài/body.css" rel="stylesheet" />
     <link rel="icon" type="image/png" href="~/Content/ảnh/tiki.png" /> @*để ảnh vào title*@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <script language="JavaScript">
-        function searchMap() {
-            const defaultAddress = "828 Đ. Sư Vạn Hạnh, Phường 12, Quận 10";
-            /*            const defaultLocation = "HUFLIT Sư Vạn Hạnh";*/
+    <script>
+        // Hàm lưu địa chỉ vào localStorage và hiển thị ra màn hình
+        function saveAddress() {
             var address = document.getElementById('addressInput').value;
             if (address) {
-                var url = 'https://www.google.com/maps/dir/?api=1&origin=' + encodeURIComponent(defaultAddress) + '&destination=' + encodeURIComponent(address);
-                window.open(url, '_blank');
+                localStorage.setItem('savedAddress', address); // Lưu địa chỉ vào localStorage
+                document.getElementById('displayAddress').innerText =  address; // Hiển thị địa chỉ
             }
         }
-        function updateSuggestion() {
-            var inputText = document.getElementById('seachboxInput').value;
-            var suggestionList = document.getElementById('suggestions');
-            suggestionList.innerHTML = '';
 
-            for (var i = 0; i < 10; i++) {
-                var option = document.createElement('option');
-                option.value = inputText + ' ' + (i + 1);
-                suggestionList.appendChild(option);
+        // Khi tải lại trang, hiển thị địa chỉ đã lưu (nếu có)
+        window.onload = function () {
+            var savedAddress = localStorage.getItem('savedAddress');
+            if (savedAddress) {
+                document.getElementById('displayAddress').innerText = 'Địa chỉ đã lưu: ' + savedAddress;
             }
-            document.getElementById('suggestionBox').value = inputText + ' 1';
-        }
-        let index = 0;
-        const slidesToShow = 2;
-        const totalSlides = document.querySelectorAll('.slide').length;
+        };
 
-        function showSlide() {
-            const slider = document.querySelector('.slider');
-            const slideWidth = document.querySelector('.slide').clientWidth;
-            slider.style.transform = 'translateX(' + (-index * slideWidth) + 'px)';
-        }
+        let currentSlide = 0;
 
-        function prevSlide() {
-            index = (index === 0) ? 1 : (index - 1);
-            showSlide();
+        function showSlide(index) {
+            const slides = document.querySelectorAll('.slide');
+            const totalSlides = slides.length;
+
+            if (index >= totalSlides) {
+                currentSlide = 0; // Quay lại slide đầu tiên
+            } else if (index < 0) {
+                currentSlide = totalSlides - 1; // Quay lại slide cuối cùng
+            } else {
+                currentSlide = index;
+            }
+
+            const sliderContainer = document.querySelector('.slider-container');
+            sliderContainer.style.transform = `translateX(-${currentSlide * 100}%)`;
         }
 
         function nextSlide() {
-            index = (index === 1) ? 0 : (index + 1);
-            showSlide();
+            showSlide(currentSlide + 1); // Chuyển đến slide tiếp theo
         }
 
-        showSlide();
+        function prevSlide() {
+            showSlide(currentSlide - 1); // Quay lại slide trước đó
+        }
+
+        // Hiển thị slide đầu tiên khi tải trang
+        showSlide(currentSlide);
+
     </script>
+
 </head>
 
 <body background-color: white;>
@@ -64,7 +69,7 @@
             </div>
 
             <div id="Div_Top_searchbar">
-                <input type="text" name="id" value="Giá siêu rẻ" style="width: 60%; max-width: 60vw; min-width: 10%; height: 20px;" />
+                <input type="text" name="id" value="Giá siêu rẻ" style="width: 60%; max-width: 60%; min-width: 10%; height: 40%;" />
                 <button style="padding: 5px 10px; background-color: white ; color: blue; border: none; cursor: pointer;">Tìm kiếm</button>
             </div>
             <div id="Div_UserArea1">
@@ -73,38 +78,39 @@
                     <i class="fas fa-home" style="white-space: nowrap; background-color: white; color: blue; border: 0; cursor: pointer;">TRANG CHỦ</i>
                 </button>
                 <button>
-                 
+
                     <i class="fal fa-smile-wink" style="white-space: nowrap; background-color: white; color: black; border: 0; cursor: pointer;">Tài khoản</i>
                 </button>
-               
-              
-            </div>
-            <div id="Div_Suggestion_Area">
-                <button style="white-space: nowrap; background-color: white; border: none; cursor: pointer; ">điện gia dụng</button>
-                <button style="white-space: nowrap; background-color: white; border: none; cursor: pointer; ">xe cộ</button>
-                <button style="white-space: nowrap; background-color: white; border: none; cursor: pointer; ">mẹ &amp; bé</button>
-                <button style="white-space: nowrap; background-color: white; border: none; cursor: pointer; ">khỏe đẹp</button>
-                <button style="white-space: nowrap; background-color: white; border: none; cursor: pointer; ">nhà cửa</button>
-                <button style="white-space: nowrap; background-color: white; border: none; cursor: pointer; ">sách</button>
-                <button style="white-space: nowrap; background-color: white; border: none; cursor: pointer; ">thể thao</button>
-                <button style="white-space: nowrap; background-color: white; border: none; cursor: pointer; ">iphone 13</button>
-                <button style="white-space: nowrap; background-color: white; border: none; cursor: pointer; ">điện thoại</button>
-                <button style="white-space: nowrap; background-color: white; border: none; cursor: pointer; ">ipad air 5</button>
-                <button style="white-space: nowrap; background-color: white; border: none; cursor: pointer; ">oppo a17k</button>
+
 
             </div>
+            <div id="Div_Suggestion_Area" style="display: flex; justify-content: space-between; flex-wrap: nowrap;">
+                <button style="white-space: nowrap; background-color: white; border: none; cursor: pointer;">điện gia dụng</button>
+                <button style="white-space: nowrap; background-color: white; border: none; cursor: pointer;">xe cộ</button>
+                <button style="white-space: nowrap; background-color: white; border: none; cursor: pointer;">mẹ &amp; bé</button>
+                <button style="white-space: nowrap; background-color: white; border: none; cursor: pointer;">khỏe đẹp</button>
+                <button style="white-space: nowrap; background-color: white; border: none; cursor: pointer;">nhà cửa</button>
+                <button style="white-space: nowrap; background-color: white; border: none; cursor: pointer;">sách</button>
+                <button style="white-space: nowrap; background-color: white; border: none; cursor: pointer;">thể thao</button>
+                <button style="white-space: nowrap; background-color: white; border: none; cursor: pointer;">iphone 13</button>
+                <button style="white-space: nowrap; background-color: white; border: none; cursor: pointer;">điện thoại</button>
+                <button style="white-space: nowrap; background-color: white; border: none; cursor: pointer;">ipad air 5</button>
+                <button style="white-space: nowrap; background-color: white; border: none; cursor: pointer;">oppo a17k</button>
+            </div>
+
             <div id="Div_UserArea2" style="font-family: 'Arial'">
-                <button 
+                <button
                         <i class="fal fa-map-marker-alt" style="padding: 5px 10px; background-color: white ; color: black; border: 0; cursor: pointer;">Giao đến: </i>
-                </button>
-                <input type="text" name="id" border: none; style="width: 80%; max-width: 80vw; min-width: 10%; height: 20px;" />
+
+                <input type="text" name="id" style="width: 80%; max-width: 80vw; min-width: 10%; height: 20px;" />
                 <span id="displayAddress"></span>
+                </button>
             </div>
 
             <div id="Under_header" style="margin-top: 10px; gap: 4px;">
                 <div style="display:flex; align-items:center; font-size:12px; font-weight:500;">
                     <button style="white-space: nowrap; background-color: white; border: none; cursor: pointer; ">Cam Kết</button>
-                  
+
                     <div style="display:flex; ">
                         <div style="display:flex; gap:4px; align-items:center;">
                             <img src="~/Content/ảnh/hàng thật.png" alt="check" width="30" height="25" />
@@ -124,7 +130,7 @@
                         </div>
                         <div style="display:flex; align-items:center;">
                             <img src="~/Content/ảnh/giá siêu rẻ.png" alt="best pricing" height="30" width="30" />
-                       <button style="white-space: nowrap; background-color: white; border: none; cursor: pointer; ">Giá siêu rẻ</button>
+                            <button style="white-space: nowrap; background-color: white; border: none; cursor: pointer; ">Giá siêu rẻ</button>
                         </div>
                         <div style="display:flex; align-items:center;">
                             <img src="~/Content/ảnh/freeship.png" alt="freeshipping" height="30" width="30" />
@@ -133,8 +139,51 @@
                     </div>
                 </div>
             </div>
+        </div>
 
+        <div id="Div_BodyContainer" style="background-color:ghostwhite">
+            <div style="height:15px;"></div>
+            <div style="font-size:30px;margin-left:2vw; margin-top:2vw;"> Trang chủ > Điện thoại - Máy tính bảng </div>
+            <div id="Div_Nav" style="background-color:white">
+                <nav>
+                    <ul>
+                        <li><span>Home</span></li>
+                        <li> Điện thoại Smartphone</li>
+                        <li>Máy tính bảng</li>
+                        <li>Máy đọc sách</li>
+                        <li>Điện thoại phổ thông</li>
+                        <li>Điện thoại bàn </li>
+                    </ul>
+                </nav>
+            </div>
+            <div id="Div_BodyHeader">
+                <h2 style="margin-left:1vw; margin-top:1.5vw;margin-bottom:1vw;">Điện thoại - Máy tính bảng</h2>
+            </div>
 
+            <div id="Div_SliderBody">
+                <div class="slider-container">
+                    <div class="slider">
+                        <div class="slide">
+                            <img src="~/Content/ảnh/sidebar 1.1 478px 159.333px.png" />
+                        </div>
+                        <div class="slide">
+                            <img src="~/Content/ảnh/sidebar 1.2 478px 159.333px.png" />
+                        </div>
+                        <div class="slide">
+                            <img src="~/Content/ảnh/sidebar 2.0 478w 159.333h.png" />
+                        </div>
+                        <div class="slide">
+                            <img src="~/Content/ảnh/sidebar 2.1 478w 159.333h.png" />
+                        </div>
+                    </div>
+                </div>
+                <div class="navigation">
+                    <button onclick="prevSlide()"><</button>
+                    <button onclick="nextSlide()">></button>
+                </div>
+            </div>
+
+          
         </div>
         </div>
         <div>
